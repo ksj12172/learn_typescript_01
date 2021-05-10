@@ -1,5 +1,5 @@
 type Check<T> = T extends string ? boolean : number;
-type Type = Check<string>;
+type Type = Check<string>; // boolean
 
 type TypeName<T> = T extends string
   ? 'string'
@@ -13,4 +13,6 @@ type TypeName<T> = T extends string
   ? 'function'
   : 'object';
 
-type T2 = TypeName<() => void>;
+type T0 = TypeName<'a'>; // 'string'
+type T1 = TypeName<string>; // 'string'
+type T2 = TypeName<() => void>; // 'function'
