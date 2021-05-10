@@ -3,7 +3,7 @@ function simpleFunc() {
   console.log(this);
 }
 // window. : 함수가 window에 등록된다.
-simpleFunc(); // this: global
+simpleFunc(); // this: window,global
 
 class Counter {
   count = 0;
