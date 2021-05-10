@@ -16,15 +16,30 @@ const array = [];
  */
 console.log(array);
 
-function CoffeeMachine(beans) {
-    this.beans = beans; // fields, property
-    // 만들어지는 instance마다 포함되므로 instance member level
-    this.makeCoffee = (shots) => {
-        console.log('making...');
-    }
-}
+console.clear();
 
+function CoffeeMachine(beans) {
+  this.beans = beans; // fields, property
+  // 만들어지는 instance마다 포함되므로 instance member level
+  //   this.makeCoffee = shots => {
+  //     console.log('making...');
+  //   };
+}
+// prototype member level : __proto__안에 있다
+CoffeeMachine.prototype.makeCoffee = shots => {
+  console.log('making...');
+};
 const machine1 = new CoffeeMachine(10);
 const machine2 = new CoffeeMachine(20);
 console.log(machine1);
 console.log(machine2);
+
+function LatteMachine(milk) {
+  this.milk = milk;
+}
+// coffeeMachine 상속하게 하기
+LatteMachine.prototype = Object.create(CoffeeMachine.prototype);
+
+const latteMachine = new LatteMachine(123);
+console.log(latteMachine);
+latteMachine.makeCoffee();
